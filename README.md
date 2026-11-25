@@ -1,10 +1,10 @@
-# Xander/Elijah — Delmundo POS
+# Elijah POS
 
 A CodeIgniter 4 point-of-sale system for product inventory, customers, staff accounts, checkout, and sales history.
 
 ## Website
 
-[Open Xander/Elijah — Delmundo POS](http://127.0.0.1:8009)
+[Open Elijah POS](http://127.0.0.1:8009)
 
 This preview link works when the application is running locally on port 8009.
 
