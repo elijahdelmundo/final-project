@@ -1,0 +1,8 @@
+<?= $this->extend('layout') ?>
+<?= $this->section('content') ?>
+<div class="heading"><div><div class="eyebrow">Team access</div><h1>Staff</h1><p class="subtext">Manage staff credentials and profile photos.</p></div><a class="btn" href="<?= site_url('staff/new') ?>">＋ Add staff</a></div>
+<div class="table-wrap"><table><thead><tr><th>Staff member</th><th>Username</th><th>Joined</th><th>Actions</th></tr></thead><tbody>
+<?php if (!$staff): ?><tr><td class="empty" colspan="4">No staff accounts found.</td></tr><?php endif ?>
+<?php foreach($staff as $member): ?><tr><td><div style="display:flex;align-items:center;gap:12px"><?php if($member['avatar']): ?><img class="avatar" src="<?= site_url('media/avatars/'.rawurlencode($member['avatar'])) ?>" alt="<?= esc($member['full_name']) ?>"><?php else: ?><div class="avatar"></div><?php endif ?><strong><?= esc($member['full_name']) ?><?= (int)$member['id'] === (int)session()->get('user_id') ? ' (you)' : '' ?></strong></div></td><td><?= esc($member['username']) ?></td><td><?= esc(date('M j, Y',strtotime($member['created_at']))) ?></td><td><div class="actions"><a class="btn secondary small" href="<?= site_url('staff/'.$member['id'].'/edit') ?>">Edit</a><?php if((int)$member['id'] !== (int)session()->get('user_id')): ?><form class="inline-form" method="post" action="<?= site_url('staff/'.$member['id'].'/delete') ?>" onsubmit="return confirm('Delete this staff account?')"><?= csrf_field() ?><button class="btn danger small" type="submit">Delete</button></form><?php endif ?></div></td></tr><?php endforeach ?>
+</tbody></table></div>
+<?= $this->endSection() ?>
