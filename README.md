@@ -1,6 +1,6 @@
-# Delmundo Point of Sale
+# Final Project
 
-A CodeIgniter 4 POS system for product inventory, customers, staff accounts, sales checkout, and sales history.
+A CodeIgniter 4 point-of-sale system for product inventory, customers, staff accounts, checkout, and sales history.
 
 ## Features
 
@@ -14,7 +14,7 @@ A CodeIgniter 4 POS system for product inventory, customers, staff accounts, sal
 - Stock is decremented within a database transaction; an atomic stock check rejects insufficient inventory
 - Sales history includes product, customer, staff member, quantity, total, and date
 - SQLite database, migrations, and sample seeder for easy local setup
-- Delmundo navy-and-blue responsive management interface
+- Navy-and-blue responsive management interface
 
 ## Requirements
 
