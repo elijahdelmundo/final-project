@@ -9,11 +9,19 @@ class PosSeeder extends Seeder
     public function run()
     {
         $now = date('Y-m-d H:i:s');
+        $isProduction = ENVIRONMENT === 'production';
+        $username = (string) env('pos.adminUsername', $isProduction ? '' : 'admin');
+        $password = (string) env('pos.adminPassword', $isProduction ? '' : 'password');
+        $fullName = (string) env('pos.adminFullName', 'Xander/Elijah Administrator');
+
+        if ($isProduction && ($username === '' || strlen($password) < 12)) {
+            throw new \RuntimeException('Set pos.adminUsername and a unique pos.adminPassword of at least 12 characters in .env before seeding production.');
+        }
 
         $this->db->table('users')->insert([
-            'username' => 'admin',
-            'full_name' => 'Xander/Elijah Administrator',
-            'password' => password_hash('password', PASSWORD_DEFAULT),
+            'username' => $username,
+            'full_name' => $fullName,
+            'password' => password_hash($password, PASSWORD_DEFAULT),
             'created_at' => $now,
         ]);
 

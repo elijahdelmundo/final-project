@@ -51,6 +51,16 @@ The SQLite database is created at `writable/pos.db`. For a clean database, remov
 
 Change the sample password and remove or change demo records before deploying publicly.
 
-## Production notes
+## Public hosting (cPanel)
 
-Configure the web server document root to this project's `public` directory. Set `CI_ENVIRONMENT = production`, configure HTTPS, use a production-strength secret/session setup, and change seeded credentials before deployment. Keep `.env`, the SQLite database, and `writable/uploads` out of source control.
+Use PHP 8.2+ hosting with Composer (or upload the `vendor` directory), MySQL/MariaDB, and the `intl`, `mbstring`, and `mysqli` PHP extensions.
+
+1. In cPanel, create a MySQL database and user, then grant the user access to the database.
+2. Upload the project outside the public web root when possible and set the site's document root to this project's `public` directory.
+3. Install production dependencies with `composer install --no-dev --optimize-autoloader` if Composer is available on the host.
+4. Copy `env` to `.env`. Set `CI_ENVIRONMENT = production`, the site's HTTPS `app.baseURL`, and the MySQL connection settings from `env`.
+5. Add a unique production `pos.adminUsername`, `pos.adminFullName`, and `pos.adminPassword` to the server's private `.env`. The production seeder requires a custom password of at least 12 characters; it does not use the local demo credentials.
+6. Set a private production `encryption.key`, enable HTTPS, and ensure the `writable` directory is writable by PHP and not publicly accessible.
+7. Run `php spark migrate` and `php spark db:seed PosSeeder` from the project directory. Verify login, image uploads, checkout, and stock updates on the hosted domain.
+
+Never put `.env` in the public web directory or commit it to GitHub. The README's `127.0.0.1` link is a local preview; replace it with the real HTTPS URL after deployment.

@@ -25,6 +25,7 @@ app.baseURL = 'http://127.0.0.1:8009/'
 # app_baseURL = ''
 # app.forceGlobalSecureRequests = false
 # app.CSPEnabled = false
+# For public hosting, set CI_ENVIRONMENT = production and use your HTTPS domain.
 
 #--------------------------------------------------------------------
 # DATABASE
@@ -37,6 +38,13 @@ app.baseURL = 'http://127.0.0.1:8009/'
 # database.default.DBDriver = MySQLi
 # database.default.DBPrefix =
 # database.default.port = 3306
+# database.default.charset = utf8mb4
+# database.default.DBCollat = utf8mb4_general_ci
+
+# Public hosting: create these credentials in cPanel and keep them only in .env.
+# pos.adminUsername = 'your-admin-username'
+# pos.adminPassword = 'replace-with-a-unique-password-of-at-least-12-characters'
+# pos.adminFullName = 'Xander/Elijah Administrator'
 
 # If you use MySQLi as tests, first update the values of Config\Database::$tests.
 # database.tests.hostname = localhost
