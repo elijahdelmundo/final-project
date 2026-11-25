@@ -12,7 +12,7 @@ class PosSeeder extends Seeder
 
         $this->db->table('users')->insert([
             'username' => 'admin',
-            'full_name' => 'Elijah Administrator',
+            'full_name' => 'Xander/Elijah Administrator',
             'password' => password_hash('password', PASSWORD_DEFAULT),
             'created_at' => $now,
         ]);

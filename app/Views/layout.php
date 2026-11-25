@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?= esc($title ?? 'Point of Sale') ?> · Elijah POS</title>
+    <title><?= esc($title ?? 'Point of Sale') ?> · Xander/Elijah POS</title>
     <style>
         :root{--navy:#14213d;--blue:#2563eb;--blue-light:#e9efff;--light:#f5f7fb;--muted:#667085;--line:#e6eaf0;--white:#fff;--green:#15803d;--red:#b42318}
         *{box-sizing:border-box}body{margin:0;background:var(--light);color:#182230;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}a{color:var(--blue)}.topbar{background:var(--navy);color:#fff}.topbar-inner{max-width:1280px;min-height:74px;margin:auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:22px}.brand{color:#fff;text-decoration:none;font-size:21px;font-weight:850;letter-spacing:-.03em}.brand span{color:#60a5fa}.top-actions{display:flex;align-items:center;gap:15px;color:#d7e2f6;font-size:13px}.top-actions form{margin:0}.top-actions button{border:1px solid #53627d;border-radius:8px;padding:8px 12px;color:#fff;background:transparent;font-weight:700;cursor:pointer}
@@ -15,7 +15,7 @@
 </head>
 <body>
 <header class="topbar"><div class="topbar-inner">
-    <a class="brand" href="<?= site_url('/') ?>">ELIJAH<span> POS</span></a>
+    <a class="brand" href="<?= site_url('/') ?>">XANDER/ELIJAH<span> POS</span></a>
     <div class="top-actions"><span><?= esc(session()->get('full_name')) ?></span><form method="post" action="<?= site_url('logout') ?>"><?= csrf_field() ?><button type="submit">Sign out</button></form></div>
 </div></header>
 <div class="shell">
